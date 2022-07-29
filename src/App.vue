@@ -1,18 +1,16 @@
 <template>
-  <h2 v-if="num === 0">The number is zero</h2>
-  <h2 v-else-if="num<0">The number is negative</h2>
-  <h2 v-else-if="num>0">The number is Positive</h2>
-  <h2 v-else>Not a number</h2>
-
-<template v-if="display ===true">
-<h2>Sweta</h2>
-  <h2>Codeevolution</h2>
-  <h2>Vue</h2>
-</template>
-
-<h2 v-show="showElement">using v-show</h2>
-<h2 v-if="showElement">using v-if</h2>
-  
+ 
+  <h2>{{name}}</h2>
+  <div>
+    <button v-on:mouseover="name='Batman'">Change name</button>
+  </div>
+  <h2>{{count}}</h2>
+  <div>
+    <button v-on:click="increment(1)">Increment 1</button>
+    <button v-on:click="increment(5)">Increment 5</button>
+    <button v-on:click="decrement(1)">Decrement 1</button>
+    <button v-on:click="decrement(5)">Decrement 5</button>
+  </div>
 </template>
 
 <script>
@@ -21,11 +19,18 @@ export default {
   name: 'App',
   data(){
     return {
-      num: 'a',
-      display: true,
-      showElement: false
+      name: 'Riley',
+      count: 0
     };
   },
+  methods:{
+    increment(num){
+      this.count+=num
+    },
+    decrement(num){
+      this.count-=num
+    }
+  }
 };
 </script>
 
