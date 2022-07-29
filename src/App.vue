@@ -1,30 +1,26 @@
 <template>
-  <h2 v-if="num === 0">The number is zero</h2>
-  <h2 v-else-if="num<0">The number is negative</h2>
-  <h2 v-else-if="num>0">The number is Positive</h2>
-  <h2 v-else>Not a number</h2>
-
-<template v-if="display ===true">
-<h2>Sweta</h2>
-  <h2>Codeevolution</h2>
-  <h2>Vue</h2>
-</template>
-
-<h2 v-show="showElement">using v-show</h2>
-<h2 v-if="showElement">using v-if</h2>
-  
+  <template v-for="name in names" :key="name">
+    <h2>{{ name }}</h2>
+    <input placeholder="Last name" />
+    <hr />
+  </template>
+  <button @click="shuffle">Shuffle!</button>
 </template>
 
 <script>
-
+import _ from "lodash";
 export default {
-  name: 'App',
-  data(){
+  name: "App",
+  data() {
     return {
-      num: 'a',
-      display: true,
-      showElement: false
+      names: ["Bruce", "Clark", "Diana", "Barry"],
     };
+  },
+  methods: {
+    shuffle() {
+      console.log(this.names);
+      this.names = _.shuffle(this.names);
+    },
   },
 };
 </script>
@@ -37,9 +33,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
-
-.underline{
-  text-decoration: underline;
 }
 </style>
